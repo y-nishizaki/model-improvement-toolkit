@@ -1,0 +1,3 @@
+# model-improvement-toolkit
+機械学習モデルを改善するための示唆を提供するPythonパッケージです。
+現状はLightGBMとXGBoostに対応しています。

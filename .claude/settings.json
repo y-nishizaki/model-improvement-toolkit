@@ -1,0 +1,29 @@
+{
+  "env": {
+    "MAX_THINKING_TOKENS": 200000 // 1024 ~ 200000
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pushover -m \"Claude Codeがタスクを完了しました\""
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pushover -m \"Claude Codeが入力待ちです\""
+          }
+        ]
+      }
+    ]
+  }
+}
