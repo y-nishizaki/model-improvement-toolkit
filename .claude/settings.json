@@ -1,6 +1,6 @@
 {
   "env": {
-    "MAX_THINKING_TOKENS": 200000 // 1024 ~ 200000
+    "MAX_THINKING_TOKENS": 200000
   },
   "hooks": {
     "Stop": [
@@ -9,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "pushover -m \"Claude Codeがタスクを完了しました\""
+            "command": "pushover -m \"Claude Codeがタスクを完了しました\" --title \"$(basename $(pwd)): タスク完了\""
           }
         ]
       }
@@ -20,7 +20,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "pushover -m \"Claude Codeが入力待ちです\""
+            "command": "pushover -m \"Claude Codeが入力待ちです\" --title \"$(basename $(pwd)): 入力待ち\""
           }
         ]
       }
