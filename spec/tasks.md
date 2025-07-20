@@ -2,65 +2,69 @@
 
 **関連仕様**: [requirements.md](./requirements.md) | [design.md](./design.md)
 **作成日**: 2025-07-19
-**最終更新**: 2025-07-19
+**最終更新**: 2025-07-20
 
 ## 全体進捗サマリー
-- **Phase 1**: 基盤構築 🔲 (0%)
-- **Phase 2**: コア機能実装 🔲 (0%)
-- **Phase 3**: 品質保証 🔲 (0%)
+- **Phase 1**: 基盤構築 ✅ (100%)
+- **Phase 2**: コア機能実装 🟦 (20%)
+- **Phase 3**: 品質保証 🟦 (30%)
 - **Phase 4**: 運用準備 🔲 (0%)
 
 ## Phase 1: 基盤構築
 
-### 1.1 プロジェクトセットアップ
-- [ ] プロジェクト構造の作成
-  - [ ] src/model_improvement_toolkit/ディレクトリ構造作成
-  - [ ] __init__.pyファイルの配置
-  - [ ] 基本的なパッケージ構成の確立
-- [ ] 開発環境の設定
-  - [ ] pyproject.tomlの作成
-  - [ ] requirements.txtとrequirements-dev.txtの作成
-  - [ ] .gitignoreの設定
-  - [ ] pre-commitフックの設定
-- [ ] CI/CDパイプラインの設定
-  - [ ] GitHub Actionsワークフローの作成
-  - [ ] テスト自動実行の設定
-  - [ ] コードカバレッジレポートの設定
+### 1.1 プロジェクトセットアップ ✅
+- [x] プロジェクト構造の作成
+  - [x] src/model_improvement_toolkit/ディレクトリ構造作成
+  - [x] __init__.pyファイルの配置
+  - [x] 基本的なパッケージ構成の確立
+- [x] 開発環境の設定
+  - [x] pyproject.tomlの作成
+  - [x] requirements.txtとrequirements-dev.txtの作成
+  - [x] .gitignoreの設定
+  - [x] pre-commitフックの設定
+- [x] CI/CDパイプラインの設定
+  - [x] GitHub Actionsワークフローの作成
+  - [x] テスト自動実行の設定
+  - [x] コードカバレッジレポートの設定
 
-### 1.2 基底クラスとインターフェース
-- [ ] core/analyzer.py - ModelAnalyzer基底クラスの実装
-- [ ] models/base.py - モデルラッパー基底クラスの実装
-- [ ] core/validator.py - データ検証クラスの実装
-- [ ] utils/config.py - 設定管理システムの実装
-- [ ] カスタム例外クラスの定義
+### 1.2 基底クラスとインターフェース ✅
+- [x] core/analyzer.py - ModelAnalyzer基底クラスの実装
+- [x] models/base.py - モデルラッパー基底クラスの実装
+- [x] core/validator.py - データ検証クラスの実装
+- [x] utils/config.py - 設定管理システムの実装
+- [x] カスタム例外クラスの定義 (utils/exceptions.py)
 
-### 1.3 テスト基盤
-- [ ] pytestの設定（pytest.ini）
-- [ ] テストフィクスチャの作成
-- [ ] モックデータとモデルの準備
-- [ ] テストユーティリティの実装
+### 1.3 テスト基盤 ✅
+- [x] pytestの設定（pytest.ini）
+- [x] テストフィクスチャの作成 (tests/conftest.py)
+- [x] モックデータとモデルの準備
+- [x] テストユーティリティの実装
 
 ## Phase 2: コア機能実装
 
 ### 2.1 モデル分析機能
-- [ ] **LightGBMサポート**
-  - [ ] models/lightgbm.py - LightGBMAnalyzerクラスの実装
-  - [ ] LightGBM特有のメトリクス抽出
-  - [ ] テストケースの作成
+- [x] **LightGBMサポート** ✅
+  - [x] models/lightgbm.py - LightGBMAnalyzerクラスの実装
+  - [x] LightGBMWrapper - sklearn/Booster API統一ラッパー
+  - [x] LightGBM特有のメトリクス抽出
+  - [x] テストケースの作成 (tests/test_models/test_lightgbm.py)
 - [ ] **XGBoostサポート**
   - [ ] models/xgboost.py - XGBoostAnalyzerクラスの実装
   - [ ] XGBoost特有のメトリクス抽出
   - [ ] テストケースの作成
-- [ ] **メトリクス計算**
-  - [ ] core/metrics.py - 基本的なメトリクス計算の実装
-  - [ ] 分類・回帰両方のメトリクスサポート
-  - [ ] カスタムメトリクスの追加機能
+- [x] **メトリクス計算** ✅
+  - [x] core/metrics.py - 基本的なメトリクス計算の実装
+  - [x] 分類・回帰両方のメトリクスサポート
+  - [x] 自動タスク検出機能
+  - [x] テストケースの作成 (tests/test_core/test_metrics.py)
 
 ### 2.2 特徴量分析
-- [ ] analysis/feature_importance.py - 特徴量重要度分析の実装
-  - [ ] 重要度計算アルゴリズム
-  - [ ] 累積重要度の計算
-  - [ ] 低重要度特徴量の特定
+- [x] analysis/feature_importance.py - 特徴量重要度分析の実装 ✅
+  - [x] 重要度計算アルゴリズム
+  - [x] 累積重要度の計算
+  - [x] 低重要度特徴量の特定
+  - [x] 特徴量選択提案機能
+  - [x] テストケースの作成 (tests/test_analysis/test_feature_importance.py)
 - [ ] analysis/error_analysis.py - 誤差分析の実装
   - [ ] 予測誤差のパターン分析
   - [ ] 誤分類サンプルの特徴分析
@@ -167,10 +171,15 @@
 5. **Phase 3**は各機能の実装と並行して進行
 6. **Phase 4**は**Phase 3**がある程度進んでから
 
-### MVP（最小限の製品）に必要なタスク
-1. プロジェクトセットアップ（Phase 1.1）
-2. 基底クラス（Phase 1.2）
-3. LightGBMサポート（Phase 2.1の一部）
-4. 基本的な特徴量重要度分析（Phase 2.2の一部）
-5. 簡易HTMLレポート（Phase 2.5の一部）
-6. 基本的なテスト（Phase 3.1の一部）
+### MVP（最小限の製品）に必要なタスク ✅
+1. プロジェクトセットアップ（Phase 1.1）✅
+2. 基底クラス（Phase 1.2）✅
+3. LightGBMサポート（Phase 2.1の一部）✅
+4. 基本的な特徴量重要度分析（Phase 2.2の一部）✅
+5. 簡易HTMLレポート（Phase 2.5の一部）🔲
+6. 基本的なテスト（Phase 3.1の一部）✅
+
+### 現在の実装状況（2025-07-20）
+- **完了**: 基盤構築、LightGBMAnalyzer、特徴量重要度分析、メトリクス計算、テスト基盤
+- **進行中**: 可視化・レポート機能
+- **未着手**: XGBoostサポート、高度な分析機能、運用準備
